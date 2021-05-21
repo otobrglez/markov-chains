@@ -1,6 +1,6 @@
 # Markov Chains with Scala
 
-![graph](download.svg)
+![graph](markov-chain-example.svg)
 
 Exploring different concepts and playing around with [Markov Chains][mc] in Scala.
 
