@@ -1,7 +1,5 @@
-package com.pinkstack.bcmc
+package com.pinkstack.gen1
 
-import cats.effect.IO
-import com.pinkstack.bcmc.Better.Implicits.{CharChain, StringChain}
 import org.apache.commons.math3.distribution.EnumeratedDistribution
 import org.apache.commons.math3.util.Pair
 
@@ -33,6 +31,8 @@ trait MCGenerator {
             .map(frequency => c ++ Map(next -> (frequency + 1)))
             .getOrElse(c ++ Map(next -> 1))
         }.getOrElse(Map(next -> 1)))
+      case (agg, _) =>
+        agg
     }
 
   def generateWord(chain: MChain[Char])(length: Int)(implicit seedChar: Option[Char] = None): String = {
@@ -79,67 +79,16 @@ trait MCGenerator {
 
 object MCGenerator extends MCGenerator
 
-trait Better[S] {
-  type Chain = Map[S, Map[S, Int]]
-
-  def buildChain[I](list: List[S]): Chain
-
-  val xChain: List[S] => Chain
-
-  def pairs[C <: IterableOnce[S]](states: C): List[List[S]] =
-    states.iterator.sliding(2).toList.map(_.toList)
-}
-
-object Better {
-
-  object Implicits {
-    implicit object StringChain extends Better[String] {
-      def buildChain[I](list: List[String]): StringChain.Chain = Map("oto" -> Map("m" -> 1))
-
-      override val xChain: List[String] => StringChain.Chain = _ =>
-        Map("oto" -> Map("m" -> 1))
-    }
-
-    implicit object CharChain extends Better[Char] {
-      def buildChain[I](list: List[Char]): CharChain.Chain = Map('o' -> Map('m' -> 1))
-
-      override val xChain: List[Char] => CharChain.Chain = _ =>
-        Map('o' -> Map('m' -> 1))
-    }
-  }
-
-  def chain[T](list: List[T])(implicit bc: Better[T]): bc.Chain = {
-    println(bc.pairs(list))
-    bc.buildChain(list)
-  }
-}
-
 object GenerateNameApp {
   def main(args: Array[String]): Unit = {
-    // import Better.Implicits._
-
     val names = List(
       "BitCoin", "dodoCoin", "dodo coin", "blockcoin", "cashman", "doller", "cashmachine",
       "loronum", "eterom", "eterim", "eterium", "coinblock", "blockchoin")
 
-    val chainNames = Better.chain(names)
-    println(chainNames)
-    // val chain = BetterGenerator.buildChain(names)
-    // println(chain)
-    // (1 to 500).foreach { _ =>
-    //   println(MCGenerator.generateBrand(chain, names))
-    // }
+    val chain = MCGenerator.buildChain(names)
 
-    println("----")
+    val generatedNames = (1 to 500).map(_ => MCGenerator.generateBrand(chain, names)).toList
 
-    type W = Char
-    val R: W = 'R'
-    val S: W = 'S'
-    val F: W = 'F'
-    val weather = List[W](R, R, F, S, S, S, S, S, F, R, R, R, R, F, S)
-
-    val weatherChain = Better.chain(weather)
-    println(weatherChain)
-
+    println(generatedNames)
   }
 }

@@ -1,4 +1,4 @@
-package com.pinkstack.bcmc
+package com.pinkstack.gen1
 
 import cats.implicits._
 import io.circe

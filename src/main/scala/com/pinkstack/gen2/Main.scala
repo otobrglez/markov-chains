@@ -1,7 +1,7 @@
 /**
  * Author: Oto Brglez / @otobrglez - <otobrglez@gmail.com>
  */
-package com.pinkstack.lns001.mc
+package com.pinkstack.gen2
 
 import org.apache.commons.math3.distribution.EnumeratedDistribution
 import org.apache.commons.math3.util.Pair

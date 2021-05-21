@@ -6,6 +6,21 @@ Exploring different concepts and playing around with [Markov Chains][mc] in Scal
 
 The code was also written as part of my exploration of [Twitch - @otobrglez](https://www.twitch.tv/otobrglez).
 
+## Examples
+
+### `gen1` - Pulling crypto-currencies and generating names
+
+```bash
+$ sbt "runMain com.pinkstack.gen1.SyncCurrenciesApp"
+$ sbt "runMain com.pinkstack.gen1.GenerateNameApp"
+```
+
+### `gen2` - Clean and simple FP implementation
+
+```bash
+$ sbt "runMain com.pinkstack.gen1.Main"
+```
+
 ## Resources
 
 - https://en.wikipedia.org/wiki/Markov_chain

@@ -1,4 +1,4 @@
-package com.pinkstack.bcmc
+package com.pinkstack.gen1
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers

@@ -1,7 +1,8 @@
-package com.pinkstack.bcmc
+package com.pinkstack.gen1
 
 import cats.effect.IO
 import cats.implicits._
+import com.pinkstack.gen1.CoinMarketCap._
 import com.typesafe.scalalogging.LazyLogging
 import doobie._
 import doobie.implicits._
@@ -10,10 +11,7 @@ import doobie.util.transactor.Transactor.Aux
 
 import scala.concurrent.ExecutionContext
 
-
 object SyncCurrenciesApp extends LazyLogging {
-
-  import com.pinkstack.bcmc.CoinMarketCap._
 
   implicit val cs = IO.contextShift(ExecutionContext.global)
   implicit val han = LogHandler.jdkLogHandler

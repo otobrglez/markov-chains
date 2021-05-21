@@ -1,4 +1,4 @@
-package com.pinkstack.bcmc
+package com.pinkstack.gen1
 
 import io.circe.{Decoder, HCursor}
 
