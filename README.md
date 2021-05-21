@@ -8,14 +8,14 @@ The code was also written as part of my exploration of [Twitch - @otobrglez](htt
 
 ## Examples
 
-### `gen1` - Pulling crypto-currencies and generating names
+### [gen1](src/main/scala/com/pinkstack/gen1) - Pulling crypto-currencies and generating names
 
 ```bash
 $ sbt "runMain com.pinkstack.gen1.SyncCurrenciesApp"
 $ sbt "runMain com.pinkstack.gen1.GenerateNameApp"
 ```
 
-### `gen2` - Clean and simple FP implementation
+### [gen2](src/main/scala/com/pinkstack/gen2) - Clean and simple FP implementation
 
 ```bash
 $ sbt "runMain com.pinkstack.gen1.Main"
