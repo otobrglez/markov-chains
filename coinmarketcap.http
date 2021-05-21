@@ -1,0 +1,30 @@
+###
+
+# curl 'https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing?start=201&limit=200&sortBy=market_cap&sortType=desc&convert=USD&cryptoType=all&tagType=all'
+#  -H 'authority: api.coinmarketcap.com'
+#  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"'
+#  -H 'accept: application/json, text/plain, */*'
+#  -H 'sec-ch-ua-mobile: ?0'
+#  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
+#  -H 'origin: https://coinmarketcap.com'
+#  -H 'sec-fetch-site: same-site'
+#  -H 'sec-fetch-mode: cors'
+#  -H 'sec-fetch-dest: empty'
+#  -H 'referer: https://coinmarketcap.com/'
+#  -H 'accept-language: sl-SI,sl;q=0.9,en-GB;q=0.8,en;q=0.7'
+#  --compressed
+GET https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing?start=201&limit=200&sortBy=market_cap&sortType=desc&convert=EUR&cryptoType=all&tagType=all
+# authority: api.coinmarketcap.com
+# sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"
+# accept: application/json, text/plain, */*
+# sec-ch-ua-mobile: ?0
+# user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+# origin: https://coinmarketcap.com
+# sec-fetch-site: same-site
+# sec-fetch-mode: cors
+# sec-fetch-dest: empty
+# referer: https://coinmarketcap.com/
+# accept-language: sl-SI,sl;q=0.9,en-GB;q=0.8,en;q=0.7
+
+###
+
