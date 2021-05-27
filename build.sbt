@@ -13,6 +13,8 @@ lazy val root = (project in file("."))
         doobie ++ logging ++ apacheCommons ++ scalaTest
   )
 
+addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1")
+
 scalacOptions ++= Seq(
   "-Ymacro-annotations",
   "-deprecation", // Emit warning and location for usages of deprecated APIs.

@@ -9,11 +9,12 @@ import doobie.implicits._
 import doobie.util.transactor.Transactor
 import doobie.util.transactor.Transactor.Aux
 
-import scala.concurrent.ExecutionContext
+// import scala.concurrent.ExecutionContext
+import cats.effect.unsafe.implicits.global
 
 object SyncCurrenciesApp extends LazyLogging {
 
-  implicit val cs = IO.contextShift(ExecutionContext.global)
+  // implicit val cs = IO.contextShift(ExecutionContext.global)
   implicit val han = LogHandler.jdkLogHandler
 
   val xa: Aux[IO, Unit] = Transactor.fromDriverManager[IO](

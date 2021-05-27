@@ -5,12 +5,13 @@ object Dependencies {
   type Version = String
 
   object Versions {
-    val Sttp: Version = "3.3.2"
+    val Sttp: Version = "3.3.4"
     val ScalaTest: Version = "3.2.8"
 
-    val Cats: Version = "2.3.0"
+    val Cats: Version = "2.6.0"
+    val CatsEffect: Version = "3.1.1"
     val Circe: Version = "0.12.3"
-    val Doobie: Version = "0.12.1"
+    val Doobie: Version = "1.0.0-M4" // "0.12.1"
     val LogbackClassic: Version = "1.2.3"
     val ScalaLogging: Version = "3.9.3"
   }
@@ -21,7 +22,8 @@ object Dependencies {
   )
 
   val cats = Seq(
-    "org.typelevel" %% "cats-core" % Versions.Cats
+    "org.typelevel" %% "cats-core" % Versions.Cats,
+    "org.typelevel" %% "cats-effect" % Versions.CatsEffect
   )
 
   val circe = Seq(
@@ -40,7 +42,8 @@ object Dependencies {
 
   val logging = Seq(
     "ch.qos.logback" % "logback-classic" % Versions.LogbackClassic,
-    "com.typesafe.scala-logging" %% "scala-logging" % Versions.ScalaLogging
+    "com.typesafe.scala-logging" %% "scala-logging" % Versions.ScalaLogging,
+    "com.softwaremill.sttp.client3" %% "slf4j-backend" % Versions.Sttp
   )
 
   val apacheCommons = Seq(

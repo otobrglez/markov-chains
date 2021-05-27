@@ -12,6 +12,12 @@ object CoinMarketCapClient {
   import CoinMarketCap._
 
   private val backend: SttpBackend[Identity, Any] = HttpURLConnectionBackend()
+
+  /*
+  private val backend: SttpBackend[Identity, Any] =
+    LoggingBackend(HttpURLConnectionBackend(),
+      includeTiming = true, logRequestBody = true, logResponseBody = true)
+*/
   private val initialParameters: Map[String, String] = Map(
     "limit" -> "200", "sortBy" -> "market_cap", "sortType" -> "desc",
     "convert" -> "EUR", "cryptoType" -> "all", "tagType" -> "all")

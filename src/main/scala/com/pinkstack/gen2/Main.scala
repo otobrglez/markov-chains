@@ -53,18 +53,9 @@ object Main {
     val weatherChain = Generator.chain(historicalWeather)
     val fakeWeather = Generator.generate(10)(weatherChain)
 
-    println(s"Historical weather forecast => $historicalWeather")
-    println(s"Generated weather forecast => $fakeWeather")
-    println(s"Underlying chain => $weatherChain")
-    println(s"Simplification => ${Generator.fromList(5, historicalWeather)}")
-
-    weatherChain.foreach { case (from, transitions) =>
-      val t: Double = transitions.values.foldLeft(0.toDouble)((agg, c) => agg + c)
-      transitions.foreach { case (to, frequency: Int) =>
-        val share:String = f"${(frequency.toDouble / t)*100}%1.1f"
-        println(s"""$from -> $to [label="$share%"]""")
-      }
-    }
-
+    println(s"Historical weather forecast\n${historicalWeather.mkString(", ")}")
+    println(s"\nGenerated weather forecast\n${fakeWeather.mkString(", ")}")
+    println(s"\nUnderlying chain\n$weatherChain")
+    println(s"\nSimplification => ${Generator.fromList(5, historicalWeather)}")
   }
 }
