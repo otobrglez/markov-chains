@@ -14,6 +14,7 @@ object Dependencies {
     val Doobie: Version = "1.0.0-M4" // "0.12.1"
     val LogbackClassic: Version = "1.2.3"
     val ScalaLogging: Version = "3.9.3"
+    val FS2: Version = "3.0.0"
   }
 
   val sttp = Seq(
@@ -49,6 +50,12 @@ object Dependencies {
   val apacheCommons = Seq(
     "org.apache.commons" % "commons-math3" % "3.6.1"
   )
+
+  val fs2 = Seq(
+    "co.fs2" %% "fs2-core",
+    "co.fs2" %% "fs2-io",
+    "co.fs2" %% "fs2-reactive-streams"
+  ).map(_ % Versions.FS2)
 
   val scalaTest = Seq(
     "org.scalatest" %% "scalatest" % Versions.ScalaTest

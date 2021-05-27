@@ -9,7 +9,7 @@ import doobie.implicits._
 import scala.concurrent.duration._
 
 object Main extends IOApp with LazyLogging {
-  val log: String => IO[Unit] = s => IO.pure(logger.info(s))
+  val log: String => IO[Unit] = s => IO(logger.info(s)).void
 
   def refreshLocalCurrencies: IO[Unit] =
     for {
@@ -27,7 +27,8 @@ object Main extends IOApp with LazyLogging {
     for {
       _ <- log("Getting started here")
       _ <- DB.createCurrenciesTable.update.run.transact(DB.xa)
-      _ <- refreshLocalCurrencies.delayBy(1.second).foreverM
+      fiber <- refreshLocalCurrencies.delayBy(1.second).foreverM.start
+      _ <- fiber.join
     } yield ExitCode.Success
 
   def run(args: List[String]): IO[ExitCode] = program

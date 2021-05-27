@@ -10,7 +10,8 @@ lazy val root = (project in file("."))
     name := "Markov Chains",
     libraryDependencies ++=
       cats ++ circe ++ sttp ++
-        doobie ++ logging ++ apacheCommons ++ scalaTest
+        doobie ++ logging ++ apacheCommons ++
+        fs2 ++ scalaTest
   )
 
 addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1")
