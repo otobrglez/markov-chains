@@ -36,6 +36,12 @@ with [IO](https://typelevel.org/cats-effect/docs/2.x/datatypes/io) data type.
 $ sbt "runMain com.pinkstack.gen4.Main"
 ```
 
+### [gen5](src/main/scala/com/pinkstack/gen5) - Experimenting with Scala Cats [State data type / Monad][cats-state]
+
+```bash
+$ sbt "runMain com.pinkstack.gen5.Main"
+```
+
 
 ## Resources
 
@@ -52,3 +58,4 @@ $ sbt "runMain com.pinkstack.gen4.Main"
 [ce3]: https://typelevel.org/cats-effect/
 [doobie]: https://tpolecat.github.io/doobie/
 [sttp]: https://github.com/softwaremill/sttp
+[cats-state]: https://typelevel.org/cats/datatypes/state.html
