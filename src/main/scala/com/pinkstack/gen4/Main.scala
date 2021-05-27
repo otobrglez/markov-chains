@@ -20,7 +20,7 @@ object Main extends IOApp with LazyLogging {
         .traverse { batch: List[Currency] =>
           DB.upsertCurrencies(batch).transact(DB.xa)
         }
-      _ <- log(s"Upserts: ${inserts.sum}")
+      _ <- log(s"Number of mutations: ${inserts.sum}")
     } yield IO.sleep(1.seconds)
 
   val program: IO[ExitCode] =
