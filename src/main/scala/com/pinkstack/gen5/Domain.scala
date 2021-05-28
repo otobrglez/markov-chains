@@ -9,6 +9,47 @@ object Domain {
   type QuestionID = DomainObjectID
   type QuestionOptionID = DomainObjectID
 
+  sealed trait DomainObject {
+    def id: Option[DomainObjectID]
+  }
+
+  final case class Survey(id: Option[SurveyID], name: Option[String], questions: List[Question] = List.empty) extends DomainObject
+
+  object Survey {
+    val empty: Survey = Survey(None, None)
+  }
+
+  final case class QuestionOption(id: Option[QuestionOptionID], name: Option[String]) extends DomainObject
+
+  object QuestionOption {
+    val empty: QuestionOption = QuestionOption(None, None)
+  }
+
+  final case class Question(id: Option[QuestionID], name: Option[String], questionOptions: List[QuestionOption] = List.empty) extends DomainObject
+
+  object Question {
+    val empty: Question = Question(None, None)
+  }
+
+  implicit val surveyMonoid: Monoid[Survey] = new Monoid[Survey] {
+    override def empty: Survey = Survey.empty
+
+    override def combine(x: Survey, y: Survey): Survey =
+      Survey(
+        id = x.id |+| y.id,
+        name = x.name |+| y.name,
+        questions = x.questions |+| y.questions
+      )
+  }
+
+  object Incoming {
+    sealed trait DomainObject
+
+    final case class QuestionOption(name: String) extends DomainObject
+
+    final case class Question(name: String, questionOptions: List[QuestionOption] = List.empty) extends DomainObject
+  }
+
   object Protocol {
     sealed trait Event extends Product
 
@@ -26,48 +67,5 @@ object Domain {
 
     final case class QuestionAdded(question: Domain.Question) extends Event
 
-  }
-
-  object Incoming {
-    sealed trait DomainObject
-
-    final case class QuestionOption(name: String) extends DomainObject
-
-    final case class Question(name: String, questionOptions: List[QuestionOption] = List.empty) extends DomainObject
-  }
-
-  object Domain {
-    sealed trait DomainObject {
-      def id: Option[DomainObjectID]
-    }
-
-    final case class Survey(id: Option[SurveyID], name: Option[String], questions: List[Question] = List.empty) extends DomainObject
-
-    object Survey {
-      val empty: Survey = Survey(None, None)
-    }
-
-    final case class QuestionOption(id: Option[QuestionOptionID], name: Option[String]) extends DomainObject
-
-    object QuestionOption {
-      val empty: QuestionOption = QuestionOption(None, None)
-    }
-
-    final case class Question(id: Option[QuestionID], name: Option[String], questionOptions: List[QuestionOption] = List.empty) extends DomainObject
-
-    object Question {
-      val empty: Question = Question(None, None)
-    }
-
-    implicit val surveyMonoid: Monoid[Survey] = new Monoid[Survey] {
-      override def empty: Survey = Survey.empty
-
-      override def combine(x: Survey, y: Survey): Survey =
-        Survey(
-          id = x.id |+| y.id,
-          name = x.name |+| y.name,
-          questions = x.questions |+| y.questions
-        )
-    }
   }
 }

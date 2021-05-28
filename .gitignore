@@ -1,6 +1,7 @@
 # gitignore file for build related files, not for developer's tools files, see: https://git-scm.com/docs/gitignore
 .DS_Store
 *.db
+*-journal
 
 
 target/
